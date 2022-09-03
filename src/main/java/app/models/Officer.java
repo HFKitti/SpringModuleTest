@@ -2,14 +2,18 @@ package app.models;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
-public class Officer {
+public class Officer implements UserDetails {
 
     @Id
     @GeneratedValue
@@ -41,7 +45,6 @@ public class Officer {
         this.workEnd = workEnd;
     }
 
-
     public long getId() {
         return id;
     }
@@ -50,8 +53,39 @@ public class Officer {
         this.id = id;
     }
 
+    @Override
     public String getUsername() {
         return username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority auth = new SimpleGrantedAuthority("USER");
+
+        List<SimpleGrantedAuthority> auths = new ArrayList<>();
+        auths.add(auth);
+
+        return auths;
     }
 
     public boolean isEnable() {
@@ -89,4 +123,5 @@ public class Officer {
     public void setWorkEnd(LocalDateTime workEnd) {
         this.workEnd = workEnd;
     }
+
 }

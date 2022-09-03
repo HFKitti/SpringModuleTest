@@ -19,6 +19,7 @@ public class WebSecConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin()
+                .usernameParameter("username")
                 .permitAll()
                 .loginPage("/login")
                 .failureUrl("/login-error")
