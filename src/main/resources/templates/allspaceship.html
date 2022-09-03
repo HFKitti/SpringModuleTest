@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AllSpaceShip</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+
+<table>
+    <tr>
+        <th>Regisztrációs kód</th>
+        <th>Név</th>
+        <th>Űrhajó osztálya</th>
+        <th>Aktív-e</th>
+    </tr>
+    <tr data-th-each="p : ${spaceShip}">
+        <td data-th-text="${p.registrationCode}"></td>
+        <td data-th-text="${p.name}"></td>
+        <td data-th-text="${p.spaceShipClass}"></td>
+        <td data-th-text="${p.isActive}"></td>
+    </tr>
+</table>
+
+<br>
+<br>
+
+<a href="result">Az aktív űrhajókhoz katt ide</a>
+
+<br>
+<br>
+
+<a href="crew">A legénység listájához katt ide</a>
+
+</body>
+
+</html>

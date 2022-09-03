@@ -3,10 +3,17 @@ package app.models;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
+@Entity
 public class Officer {
 
+    @Id
+    @GeneratedValue
+    private long id;
     private String username;
 
     private String password;
@@ -15,7 +22,33 @@ public class Officer {
 
     private LocalDateTime workEnd;
 
-    public Officer() {}
+    public Officer() {
+
+    }
+
+    public Officer(long id) {
+        this.id = id;
+    }
+
+    public Officer(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public Officer( LocalDateTime workStart, LocalDateTime workEnd) {
+        this();
+        this.workStart = workStart;
+        this.workEnd = workEnd;
+    }
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
