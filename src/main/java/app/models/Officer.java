@@ -3,6 +3,7 @@ package app.models;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +19,7 @@ public class Officer implements UserDetails {
     @Id
     @GeneratedValue
     private long id;
+
     private String username;
 
     private String password;

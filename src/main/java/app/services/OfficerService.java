@@ -9,18 +9,16 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 @Service
 public class OfficerService implements UserDetailsService {
 
     private AppuserRepo repo;
 
-    @Autowired
-    private PasswordEncoder encoder;
-
-    @Autowired
-    public OfficerService(PasswordEncoder encoder) {
-        this.encoder = encoder;
-    }
+    @PersistenceContext
+    private EntityManager manager;
 
     public OfficerService(AppuserRepo repo) {
         this.repo = repo;
@@ -43,13 +41,13 @@ public class OfficerService implements UserDetailsService {
         return (UserDetails) repo.findByUsername(username);
     }*/
 
-    public void saveDefaultUser(){
+   /* public void saveDefaultUser(){
         repo.save(new Officer("user", "user"));
     }
 
     public void saveUser (String username, String password) {
         String encodedPw = encoder.encode(password);
-    }
+    }*/
 
 
 }
